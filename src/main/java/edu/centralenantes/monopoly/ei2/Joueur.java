@@ -4,6 +4,9 @@
  */
 package edu.centralenantes.monopoly.ei2;
 
+import edu.centralenantes.monopoly.ei2.Case.Achetable;
+import java.util.ArrayList;
+
 /**
  *
  * @author inky19
@@ -13,6 +16,8 @@ public class Joueur {
     int fortune;
     int indexCase;
     boolean enPrison;
+    int nbGare;
+    Plateau plateau;
 
     public Joueur(String nom, int fortune, int indexCase, boolean enPrison) {
         this.nom = nom;
@@ -68,7 +73,11 @@ public class Joueur {
     public void setEnPrison(boolean enPrison) {
         this.enPrison = enPrison;
     }
-    
+    public ArrayList<Achetable> proprietes(){
+        for(Case c : this.plateau.cases) {
+            
+}
+    }
     
     
     
