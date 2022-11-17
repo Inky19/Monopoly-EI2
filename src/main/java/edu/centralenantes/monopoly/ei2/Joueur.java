@@ -5,9 +5,11 @@
 package edu.centralenantes.monopoly.ei2;
 
 import edu.centralenantes.monopoly.ei2.Case.Achetable;
-import edu.centralenantes.monopoly.ei2.Case.Case;
+import edu.centralenantes.monopoly.ei2.Case.*;
+import edu.centralenantes.monopoly.ei2.Case.Taxe;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  *
@@ -21,6 +23,7 @@ public class Joueur {
     int nbGare;
     Plateau plateau;
     public static final int FORTUNE_INITIALE = 100000;
+    
     public Joueur(String nom, int fortune, int indexCase, boolean enPrison, int nbGare, Plateau plateau) {
         this.nom = nom;
         this.fortune = fortune;
@@ -77,6 +80,12 @@ public class Joueur {
         return indexCase;
     }
 
+    public String getNom() {
+        return nom;
+    }
+    
+    
+
     public boolean isEnPrison() {
         return enPrison;
     }
@@ -97,9 +106,6 @@ public class Joueur {
         this.enPrison = enPrison;
     }
 
-    public String getNom() {
-        return nom;
-    }
 
 
     public int getNbGare() {
@@ -141,13 +147,33 @@ public class Joueur {
         final Joueur other = (Joueur) obj;
         return Objects.equals(this.nom, other.nom);
     }
-
+    
+    
     @Override
     public String toString() {
-        return "Joueur{" + '}';
+        String res = (this.nom +"possède "+String.valueOf(this.fortune)+"euros monopolitains.");
+        ArrayList<Achetable> proprietes = this.proprietes();
+        if(proprietes.isEmpty()){
+            res = res+" Il ne possède actuellement pas de bien immobilier.";
+        }
+        else{
+            res = res + "Il est propriétaire de :";
+            for (Achetable a : proprietes){
+                res = res + a.getNom()+"\r";
+            }
+        }
+        if(this.isEnPrison()){
+            res = res + "Il purge actuellement une peine en prison pour les crimes abjects qu'il a commis";
+        }
+        else{
+            res = res + " Il se trouve actuellement sur la case "+this.plateau.cases.get(this.indexCase).getNom();
+        }
+        return  res;
     }
     
-    
+    public static int lanceLeDe() {
+        return ((int) Math.floor(Math.random()*6))+1;
+    }
     
     
 
@@ -160,5 +186,39 @@ public class Joueur {
         this.indexCase = newIndex;
     }
 
+    
+    public void tourDuJoueur(Plateau p) {
+        System.out.println("C'est le tour du joueur: " + this.nom);
+        System.out.println(this.nom + " possède " + this.fortune);
+        int de1 = 0;
+        int de2 = 0;
+        int count = 0;
+        Scanner sc = new Scanner(System.in);
+        while (de1 == de2 && count < 3) {
+            de1 = lanceLeDe();
+            de2 = lanceLeDe();
+            this.avance(de1+de2); 
+            System.out.println(nom + " est sur la case: " + p.getCases().get(indexCase).getNom());
+            if (p.getCases().get(indexCase) instanceof Achetable) {
+                if (p.getCases().get(indexCase).getProprietaire == null) {
+                    p.getCases().get(indexCase).acheter(this);
+                } else if (p.getCases().get(indexCase).getProprietaire().equals(this)) {
+                    System.out.println("Voulez-vous construire la propriété ?");
+                    System.out.println("Oui|Non");
+                    String choix = sc.nextLine();
+                    if (choix == "Oui") {
+                        p.getCases().get(indexCase).construire(this,sc);
+                    }
+                } else {
+                    System.out.println("Le propriétaire de cette case est: "+ p.getCases().get(indexCase).getProprietaire().getNom());
+                    int loy = p.getCases().get(indexCase).loyer(this);
+                    this.payer(p.getCases().get(indexCase).getProprietaire, loy);
+                }
+            } else if (p.getCases().get(indexCase) instanceof Taxe) {
+                this.payerBanque(p.getCases().get(indexCase).getPrix());
+            }
+            count += 1;
+        }
 
+        }
 }
