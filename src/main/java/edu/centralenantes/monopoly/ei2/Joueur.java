@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author inky19
+ * @author Léo et Corentin
  */
 public class Joueur {
     String nom;
@@ -147,8 +147,7 @@ public class Joueur {
         final Joueur other = (Joueur) obj;
         return Objects.equals(this.nom, other.nom);
     }
-    
-    
+
     @Override
     public String toString() {
         String res = (this.nom +"possède "+String.valueOf(this.fortune)+"euros monopolitains.");
