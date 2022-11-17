@@ -26,7 +26,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author inky19, littlewuuu, Bryan
+ * @author Arthur, littlewuuu, Bryan,
  */
 public class Plateau {
     List<Case> cases;
@@ -117,12 +117,13 @@ public class Plateau {
         System.out.println("Nombre de Joueur");
         nbJoueur = scanner.nextInt();
         for (int i=0;i<nbJoueur;i++){
-            Joueurs.add(new Joueur());
+            joueurs.add(new Joueur());
         }
+        scanner.close();
     }
     
     public void tourDeJeu(){
-        for (Joueur j : Joueurs){
+        for (Joueur j : joueurs){
             j.tourDuJoueur(this);
         }
     }
