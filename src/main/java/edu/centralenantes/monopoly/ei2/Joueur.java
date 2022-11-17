@@ -147,28 +147,10 @@ public class Joueur {
         final Joueur other = (Joueur) obj;
         return Objects.equals(this.nom, other.nom);
     }
-    
-    
+
     @Override
     public String toString() {
-        String res = (this.nom +"possède "+String.valueOf(this.fortune)+"euros monopolitains.");
-        ArrayList<Achetable> proprietes = this.proprietes();
-        if(proprietes.isEmpty()){
-            res = res+" Il ne possède actuellement pas de bien immobilier.";
-        }
-        else{
-            res = res + "Il est propriétaire de :";
-            for (Achetable a : proprietes){
-                res = res + a.getNom()+"\r";
-            }
-        }
-        if(this.isEnPrison()){
-            res = res + "Il purge actuellement une peine en prison pour les crimes abjects qu'il a commis";
-        }
-        else{
-            res = res + " Il se trouve actuellement sur la case "+this.plateau.cases.get(this.indexCase).getNom();
-        }
-        return  res;
+        return "Joueur{" + '}';
     }
     
     public static int lanceLeDe() {
@@ -187,7 +169,7 @@ public class Joueur {
     }
 
     
-    public void tourDuJoueur(Plateau p) {
+    public void tourDuJoueur(Plateau p) throws NoMoreMoney {
         System.out.println("C'est le tour du joueur: " + this.nom);
         System.out.println(this.nom + " possède " + this.fortune);
         int de1 = 0;
@@ -200,22 +182,25 @@ public class Joueur {
             this.avance(de1+de2); 
             System.out.println(nom + " est sur la case: " + p.getCases().get(indexCase).getNom());
             if (p.getCases().get(indexCase) instanceof Achetable) {
-                if (p.getCases().get(indexCase).getProprietaire == null) {
-                    p.getCases().get(indexCase).acheter(this);
-                } else if (p.getCases().get(indexCase).getProprietaire().equals(this)) {
+                if (((Achetable)p.getCases().get(indexCase).getProprietaire()) == null) {
+                    ((Achetable)p.getCases().get(indexCase)).acheter(this);
+                } else if (((Achetable)p.getCases().get(indexCase).getProprietaire()).equals(this)) {
                     System.out.println("Voulez-vous construire la propriété ?");
                     System.out.println("Oui|Non");
                     String choix = sc.nextLine();
-                    if (choix == "Oui") {
-                        p.getCases().get(indexCase).construire(this,sc);
+                    if (choix.equals("Oui")) {
+                        ((Achetable)p.getCases().get(indexCase)).construire(this,sc);
                     }
                 } else {
-                    System.out.println("Le propriétaire de cette case est: "+ p.getCases().get(indexCase).getProprietaire().getNom());
+                    System.out.println("Le propriétaire de cette case est: "+ ((Achetable)p.getCases().get(indexCase)).getProprietaire().getNom());
                     int loy = p.getCases().get(indexCase).loyer(this);
-                    this.payer(p.getCases().get(indexCase).getProprietaire(), loy);
+                    this.payer(((Achetable)p.getCases().get(indexCase)).getProprietaire(), loy);
                 }
             } else if (p.getCases().get(indexCase) instanceof Taxe) {
-                this.payerBanque(p.getCases().get(indexCase).getPrix());
+                this.payerBanque(((Taxe)p.getCases().get(indexCase)).getPrix());
+            } else if (p.getCases().get(indexCase) instanceof PiocherCarte) {
+                ((PiocherCarte)p.getCases().get(indexCase)).piocher();
+                
             }
             count += 1;
         }
