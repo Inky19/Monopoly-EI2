@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
 package edu.centralenantes.monopoly.ei2.Case;
-
+import edu.centralenantes.monopoly.ei2.Joueur;
 /**
  *
  * @author inky19
@@ -50,6 +50,6 @@ public abstract class Achetable extends Case {
     }
   }
 
-  public abstract int loyer(Joueur j);
+  public abstract int loyer();
 
 }

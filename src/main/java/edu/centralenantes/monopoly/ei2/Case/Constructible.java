@@ -4,8 +4,6 @@
  */
 package edu.centralenantes.monopoly.ei2.Case;
 
-import edu.centralenantes.monopoly.ei2.Joueur;
-
 /**
  * Classe assurant la gestion des cases constructibles
  * @author Manon Coutier
@@ -110,19 +108,19 @@ public class Constructible extends Achetable {
         this.nbMaisons = 0;
         this.nbHotels = 0;
         this.a = this.getPrix()/8;
-        this.b = this.getPrix()/6
+        this.b = this.getPrix()/6;
         this.loyerInit = this.getPrix()/4;
     }
 
     //AUTRES METHODES
     /**
      * Calcule le loyer du constructible
-     *
-     * @return
+     * S'il n'y a pas de propriétaire, le loyer est nul
+     * @return loyer total à payer
      */
-    public int loyer(Joueur joueur) {
+    public int loyer() {
         int loyerTotal = 0;
-        if (){
+        if (this.getProprietaire() == null){
             return loyerTotal;
         }else{
             loyerTotal = this.loyerInit+ this.a*this.nbMaisons+this.b*this.nbHotels;
@@ -131,11 +129,24 @@ public class Constructible extends Achetable {
     }
     
     /**
-     * Affiche la case constructible
+     * Crée un String contenant les caractéristiques du constructible
+     * @return un string contenant les caractéristiques du constructible
      */
-    public void toString(){
-        System.out.print(this.getNom() + " (coût : " + this.getPrix() + " €) - ");
-        if (this.getProprietaire)
+    @Override
+    public String toString(){
+        String constructString = this.getNom() + " (coût : " + this.getPrix() + " €) - ";
+        if (this.getProprietaire()==null){
+            constructString += "sans propriétaire";
+        }else{
+            constructString += "propriétaire : " + this.getProprietaire().getNom();
+            if (this.nbMaisons>0){
+                constructString += ", " + this.getNbMaisons()+ " maisons,";
+            }
+            if (this.nbHotels>0){
+                constructString += ", "+ this.getNbHotels()+ " hôtels";
+            }
+            constructString += "loyer = " + this.loyer()+ " €";
+        }
+        return constructString;
     }
-
 }
