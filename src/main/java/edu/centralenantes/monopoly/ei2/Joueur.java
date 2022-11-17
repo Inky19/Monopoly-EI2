@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author inky19
+ * @author Léo et Corentin
  */
 public class Joueur {
     String nom;
@@ -212,7 +212,7 @@ public class Joueur {
                 } else {
                     System.out.println("Le propriétaire de cette case est: "+ p.getCases().get(indexCase).getProprietaire().getNom());
                     int loy = p.getCases().get(indexCase).loyer(this);
-                    this.payer(p.getCases().get(indexCase).getProprietaire, loy);
+                    this.payer(p.getCases().get(indexCase).getProprietaire(), loy);
                 }
             } else if (p.getCases().get(indexCase) instanceof Taxe) {
                 this.payerBanque(p.getCases().get(indexCase).getPrix());
