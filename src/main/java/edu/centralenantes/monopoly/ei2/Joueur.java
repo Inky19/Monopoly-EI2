@@ -97,6 +97,10 @@ public class Joueur {
         this.enPrison = enPrison;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
 
     public int getNbGare() {
         return nbGare;
@@ -137,6 +141,11 @@ public class Joueur {
         final Joueur other = (Joueur) obj;
         return Objects.equals(this.nom, other.nom);
     }
+
+    @Override
+    public String toString() {
+        return "Joueur{" + '}';
+    }
     
     
     
@@ -148,6 +157,7 @@ public class Joueur {
             newIndex = newIndex % 40;
             this.gagnerArgent(20000);
         }
+        this.indexCase = newIndex;
     }
 
 
