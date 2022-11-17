@@ -151,7 +151,24 @@ public class Joueur {
 
     @Override
     public String toString() {
-        return "Joueur{" + '}';
+        String res = (this.nom +"possède "+String.valueOf(this.fortune)+"euros monopolitains.");
+        ArrayList<Achetable> proprietes = this.proprietes();
+        if(proprietes.isEmpty()){
+            res = res+" Il ne possède actuellement pas de bien immobilier.";
+        }
+        else{
+            res = res + "Il est propriétaire de :";
+            for (Achetable a : proprietes){
+                res = res + a.getNom()+"\r";
+            }
+        }
+        if(this.isEnPrison()){
+            res = res + "Il purge actuellement une peine en prison pour les crimes abjects qu'il a commis";
+        }
+        else{
+            res = res + " Il se trouve actuellement sur la case "+this.plateau.getCases().get(this.indexCase).getNom();
+        }
+        return  res;
     }
     
     public static int lanceLeDe() {
@@ -170,7 +187,7 @@ public class Joueur {
     }
 
     
-    public void tourDuJoueur(Plateau p) throws NoMoreMoney {
+    public void tourDuJoueur(Plateau p) throws NoMoreMoney{
         System.out.println("C'est le tour du joueur: " + this.nom);
         System.out.println(this.nom + " possède " + this.fortune);
         int de1 = 0;
@@ -182,6 +199,7 @@ public class Joueur {
             de2 = lanceLeDe();
             this.avance(de1+de2); 
             System.out.println(nom + " est sur la case: " + p.getCases().get(indexCase).getNom());
+
             if (p.getCases().get(indexCase) instanceof Achetable) {
                 if ((((Achetable)p.getCases().get(indexCase)).getProprietaire()) == null) {
                     ((Achetable)p.getCases().get(indexCase)).acheter(this);
@@ -202,6 +220,7 @@ public class Joueur {
             } else if (p.getCases().get(indexCase) instanceof PiocherCarte) {
                 ((PiocherCarte)p.getCases().get(indexCase)).piocher(this);
                 
+
             }
             count += 1;
         }
