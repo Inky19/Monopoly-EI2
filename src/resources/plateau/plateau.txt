@@ -1,0 +1,41 @@
+40
+depart_0_5
+Boulevard de BelleVille_60_0
+Caisse De Communauté_0_3
+Rue Lecoubre_60_0
+Impôts Sur Le Revenu_-200_2
+Gare Montparnasse_200_1
+Rue De Vaugirard_100_0
+Chance_0_4
+Rue De Courcelles_100_0
+Avenue De La Republique_120_0
+Prison_0_6
+Boulevard De La Villette_140_0
+Compagnie De Distribution D'Electricite_150_7
+Avenue De Neuilly_140_0
+Rue De Paradis_160_0
+Gare De Lyon_200_0
+Avenue Mozart_180_0
+Caisse De Communaute_0_3
+Boulevard Saint Michel_180_0
+Place Pigale_200_0
+Parc Gratuit_0
+Avenue Matignon_220_0
+Chance_0_4
+Boulevard Malesherbes_220_0
+Avenue Henri Martin_240_0
+Gare Du Nord_200_0
+Faubourd Saint Honoré_260_0
+Place De La Bourse_260_0
+Compagnie De Distribution Des Eaux_150_7
+Rue La Fayette_280_0
+Allez En Prison_0_8
+Avenue De Breteuil_300_0
+Avenue Foch_300_0
+Caisse De Communauté_0_3
+Boulevard Des Capucins_320_0
+Gare Saint Lazare_200_0
+Chance_0_4
+Avenue Des Champs Elysees_350_0
+TaxeDeLuxe_-100_2
+RueDeLaPaix_400_0

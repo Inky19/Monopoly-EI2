@@ -41,14 +41,25 @@ public class Joueur {
         this.fortune = FORTUNE_INITIALE;
         this.indexCase = 0;
     }
+
     
     public void payer(Joueur j, int payement) throws NoMoreMoney {
         if (this.fortune < payement) {
             throw new NoMoreMoney();
-    }
+            }
         this.fortune = this.fortune - payement;
         j.setFortune(j.getFortune()+ payement);
     }
+
+
+    public Joueur(Joueur j) {
+        this.nom = j.nom;
+        this.fortune = j.fortune;
+        this.indexCase = j.indexCase;
+        this.enPrison = j.enPrison;
+        }
+
+    
     public void payerBanque(int payement) throws NoMoreMoney{
         if (this.fortune < payement) {
             throw new NoMoreMoney();
@@ -84,6 +95,7 @@ public class Joueur {
         this.enPrison = enPrison;
     }
 
+
     public int getNbGare() {
         return nbGare;
     }
@@ -102,5 +114,14 @@ public class Joueur {
     
     
     
+
+    public void avance(int nbCaseAvance) {
+        int newIndex = indexCase + nbCaseAvance;
+        if (newIndex >= 40) {
+            newIndex = newIndex % 40;
+            this.gagnerArgent(20000);
+        }
+    }
+
 
 }

@@ -13,10 +13,10 @@ public abstract class Case {
     // ATTRIBUTS
 
     // numéro de la case entre 0 et 39 compris 
-    int numero;
+    private int numero;
     
     // nom de la case
-    String nom;
+    private String nom;
     
     // CONSTRUCTEUR
     
@@ -50,12 +50,13 @@ public abstract class Case {
     }
 
     /**
-     * 
+     * Redéfinition de la méthode toString 
+     * @return le numéro ainsi que le nom de la case
      */
     
     @Override
     public String toString() {
-        return "Case{" + "numero=" + numero + ", nom=" + nom + '}';
+        return nom;
     }
 
 }
