@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Iterator;
 
 import edu.centralenantes.monopoly.ei2.Case.AllerEnPrison;
 import edu.centralenantes.monopoly.ei2.Case.Case;
@@ -29,8 +30,9 @@ import java.util.Scanner;
  * @author inky19, littlewuuu, Bryan
  */
 public class Plateau {
-    List<Case> cases;
-    List<Joueur> joueurs;
+    private List<Case> cases;
+    private List<Joueur> joueurs;
+    public int tourDeJeu;
 
     public Plateau() {
         this("/plateau/plateau.txt");
@@ -40,6 +42,7 @@ public class Plateau {
         cases = new LinkedList<>();
         joueurs = new LinkedList<>();
         initPlateau(path);
+        initJoueur();
     }
 
     private void initPlateau(String path) {
@@ -114,17 +117,51 @@ public class Plateau {
         int nbJoueur;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nombre de Joueur");
+        System.out.println("Bonjour, bienvenue dans le jeu de Monopoly réalisé par les EI2 !");
+        System.out.println("---------Initialisation des joueurs------------");
+        System.out.print("Nombre de Joueur : ");
         nbJoueur = scanner.nextInt();
         for (int i=0;i<nbJoueur;i++){
             joueurs.add(new Joueur());
+            System.out.println("-------Création du joueur : " + i  + "--------------");
+            System.out.print("Nom du joueur : ");
+            String nomJoueur = scanner.nextLine();
+            joueurs.add(new Joueur(nomJoueur, this));
+            System.out.println("Le joueur a bien été crée !");
         }
         scanner.close();
     }
     
+    /**
+     * Fait jouer tous les joueurs du jeu et les supprime en cas de faillite
+     */
     public void tourDeJeu(){
-        for (Joueur j : joueurs){
-            //j.tourDuJoueur(this);
+        System.out.println("--------Tour de jeu n°" + tourDeJeu + "---------");
+        Iterator<Joueur> it = joueurs.iterator();
+        if(finDePartie()) {
+            return;
         }
+        while (it.hasNext()){
+            Joueur joueur = (Joueur) it.next();
+            try{
+                System.out.println("Au tour de " + joueur.getNom() + " de jouer.");
+                joueur.tourDuJoueur(this);
+            } catch(NoMoreMoney ex){
+                it.remove();
+                System.out.println(joueur.getNom() + " a fait faillite !");
+            }
+        }
+        System.out.println("Fin du tour !");
+        tourDeJeu++;
+        tourDeJeu();
+    }
+
+    /**
+     * Renvoie un booléen si la partie est finie (true) ou non (false)
+     * @return
+     */
+    public boolean finDePartie(){
+        return (joueurs.size()<2);
     }
 
     public List<Case> getCases() {
