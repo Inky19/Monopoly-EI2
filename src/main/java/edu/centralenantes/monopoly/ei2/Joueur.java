@@ -27,7 +27,7 @@ public class Joueur {
         this.indexCase = 0;
         this.enPrison = false;
     }
-    
+
     public Joueur(Joueur j) {
         this.nom = j.nom;
         this.fortune = j.fortune;
@@ -66,9 +66,13 @@ public class Joueur {
     public void setEnPrison(boolean enPrison) {
         this.enPrison = enPrison;
     }
-    
-    
-    
-    
+
+    public void avance(int nbCaseAvance) {
+        int newIndex = indexCase + nbCaseAvance;
+        if (newIndex >= 40) {
+            newIndex = newIndex % 40;
+            this.gagnerArgent(20000);
+        }
+    }
 
 }

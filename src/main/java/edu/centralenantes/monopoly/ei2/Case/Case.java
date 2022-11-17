@@ -56,7 +56,7 @@ public abstract class Case {
     
     @Override
     public String toString() {
-        return "Case{" + "numero=" + numero + ", nom=" + nom + '}';
+        return nom;
     }
 
 }
