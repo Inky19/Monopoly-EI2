@@ -74,7 +74,7 @@ public class Plateau {
                         c = new Taxe(i,libelle,prix);
                         break;
                     case "3":
-                        c = new Communautaire(i,libelle):
+                        c = new Communautaire(i,libelle);
                         break;
                     case "4":
                         c = new Chance(i,libelle);
@@ -117,13 +117,13 @@ public class Plateau {
         System.out.println("Nombre de Joueur");
         nbJoueur = scanner.nextInt();
         for (int i=0;i<nbJoueur;i++){
-            Joueurs.add(new Joueur());
+            joueurs.add(new Joueur());
         }
         scanner.close();
     }
     
     public void tourDeJeu(){
-        for (Joueur j : Joueurs){
+        for (Joueur j : joueurs){
             j.tourDuJoueur(this);
         }
     }
