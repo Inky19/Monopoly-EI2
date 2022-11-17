@@ -110,19 +110,19 @@ public class Constructible extends Achetable {
         this.nbMaisons = 0;
         this.nbHotels = 0;
         this.a = this.getPrix()/8;
-        this.b = this.getPrix()/6
+        this.b = this.getPrix()/6;
         this.loyerInit = this.getPrix()/4;
     }
 
     //AUTRES METHODES
     /**
      * Calcule le loyer du constructible
-     *
-     * @return
+     * @param joueur qui tombe sur la case
+     * @return loyer total à payer pour le joueur
      */
     public int loyer(Joueur joueur) {
         int loyerTotal = 0;
-        if (){
+        if (this.getProprietaire() == null || this.getProprietaire().equals(joueur)){
             return loyerTotal;
         }else{
             loyerTotal = this.loyerInit+ this.a*this.nbMaisons+this.b*this.nbHotels;
@@ -133,9 +133,14 @@ public class Constructible extends Achetable {
     /**
      * Affiche la case constructible
      */
-    public void toString(){
-        System.out.print(this.getNom() + " (coût : " + this.getPrix() + " €) - ");
-        if (this.getProprietaire)
+    @Override
+    public String toString(){
+        String constructString = this.getNom() + " (coût : " + this.getPrix() + " €) - ";
+        if (this.getProprietaire()==null){
+            constructString += "sans propriétaire";
+        }else{
+            System.out.println("propriétaire : " + this.getProprietaire().getNom() + ", " + this.getNbMaisons());
+        }
     }
 
 }
