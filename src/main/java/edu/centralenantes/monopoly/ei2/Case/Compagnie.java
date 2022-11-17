@@ -16,10 +16,10 @@ public class Compagnie extends Achetable{
     public int loyer(Object j) {
         int l;
         if (this.proprietaire==null){
-           l=0;
+           l=0 ; 
        }
        else{
-           l=5;
+           l=5 ;
        }
        return(l); 
     }
