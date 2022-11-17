@@ -8,6 +8,32 @@ package edu.centralenantes.monopoly.ei2.Case;
  *
  * @author inky19
  */
-public class Achetable {
-
+public abstract class Achetable extends Case {
+  private int prix;
+  private Joueur proprietaire;
+  
+  public int getPrix(){
+    return this.prix;
+  }
+  
+  public void setPrix(int prix){
+    this.prix = prix;
+  }
+  
+  public Joueur getProprietaire(){
+    return this.proprietaire;
+  }
+  
+  public void setProprietaire(Joueur proprio){
+    this.proprietaire = proprio;
+  }
+  
+  public void acheter(Joueur j){
+    
+    this.setProprietaire(j);
+    j.setFortune( j.getFortune() - this.prix );
+  }
+  
+  public abstract int loyer(Joueur j);
+  
 }
