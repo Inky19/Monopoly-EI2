@@ -24,14 +24,6 @@ public class Compagnie extends Achetable{
     }
 
     /**
-     *Permet de generer un nombre aleatoire entre 1 et 6 
-     * @return nombre aleatoire entre 1 et 6
-     */
-    public static int lanceLeDe() {
-return ((int) Math.floor(Math.random()*6))+1;
-}
-
-    /**
      *Permet de calculer le loyer 40 x le nombre aleatoire s'il existe un proprietaire 0 sinon 
      * @return le loyer
      */
@@ -42,7 +34,7 @@ return ((int) Math.floor(Math.random()*6))+1;
            l=0 ; 
        }
        else{
-           l=lanceLeDe()*40 ;
+           l=Joueur.lanceLeDe()*40 ;
        }
        return l ; 
     }
