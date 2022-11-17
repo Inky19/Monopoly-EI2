@@ -89,7 +89,7 @@ public abstract class Achetable extends Case {
                 System.out.println("Vous possédez :" + j.getFortune() + "€");
                 System.out.println("Voulez-vous acheter :" + this.getNom() + " qui vaut " + this.prix + "€");
                 System.out.println("oui / non");
-                reponse = scan.nextLine();
+                reponse = scan.next();
             }
         }
         scan.close();

@@ -124,7 +124,8 @@ public class Plateau {
         for (int i=0;i<nbJoueur;i++){
             System.out.println("-------Création du joueur : " + i  + "--------------");
             System.out.print("Nom du joueur : ");
-            String nomJoueur = scanner.nextLine();
+            String nomJoueur = scanner.next();
+            System.out.println(nomJoueur);
             joueurs.add(new Joueur(nomJoueur, this));
             System.out.println("Le joueur a bien été crée !");
         }
