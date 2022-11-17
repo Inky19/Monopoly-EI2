@@ -57,12 +57,11 @@ public class Plateau {
 
             for (int i = 0; i < nbCases; i++) {
                 Case c = null;
-                Joueur j = null;
                 line = br.readLine();
                 values = line.split("_");
                 libelle = values[0];
                 prix = Integer.parseInt(values[1])*1000;
-                typeCase = values[1];
+                typeCase = values[2];
                 switch (typeCase) {
                     case "0":
                         c = new Constructible(i,libelle,prix);
