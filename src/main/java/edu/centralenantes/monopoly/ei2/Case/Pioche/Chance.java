@@ -14,16 +14,5 @@ public class Chance extends PiocherCarte {
         super(num, nom);
     }
 
-    public Chance(String nom, String description) {
-        super(nom, description);
-    }
-
-    public Chance(PiocherCarte carte) {
-        super(carte);
-    }
-
-    public Chance(int i, String libelle) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
 
