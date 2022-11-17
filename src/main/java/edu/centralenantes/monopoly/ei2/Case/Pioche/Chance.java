@@ -8,7 +8,18 @@ package edu.centralenantes.monopoly.ei2.Case.Pioche;
  *
  * @author inky19
  */
-public class Chance {
+public class Chance extends PiocherCarte {
 
+    public Chance() {
+        super();
+    }
 
+    public Chance(String nom, String description) {
+        super(nom, description);
+    }
+
+    public Chance(PiocherCarte carte) {
+        super(carte);
+    }
 }
+
