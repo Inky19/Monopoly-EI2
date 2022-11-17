@@ -4,8 +4,6 @@
  */
 package edu.centralenantes.monopoly.ei2.Case;
 
-import edu.centralenantes.monopoly.ei2.Joueur;
-
 /**
  * Classe assurant la gestion des cases constructibles
  * @author Manon Coutier
@@ -117,12 +115,11 @@ public class Constructible extends Achetable {
     //AUTRES METHODES
     /**
      * Calcule le loyer du constructible
-     * @param joueur qui tombe sur la case
-     * @return loyer total à payer pour le joueur
+     * @return loyer total à payer
      */
-    public int loyer(Joueur joueur) {
+    public int loyer() {
         int loyerTotal = 0;
-        if (this.getProprietaire() == null || this.getProprietaire().equals(joueur)){
+        if (this.getProprietaire() == null){
             return loyerTotal;
         }else{
             loyerTotal = this.loyerInit+ this.a*this.nbMaisons+this.b*this.nbHotels;
@@ -147,11 +144,10 @@ public class Constructible extends Achetable {
             if (this.nbHotels>0){
                 constructString += ", "+ this.getNbHotels()+ " hôtels";
             }
-            constructString += "loyer = " + this.loyer(joueur);
+            constructString += "loyer = " + this.loyer()+ " €";
         }
+        return constructString;
     }
 
-    //PROBLEMES ACHETABLE IMPORTER JOUEUR
-    //REVOIR LOYER ET TOUR DE JEU AVEC ARTHUR
     //VOIR GARE ET TRISTAN
 }
