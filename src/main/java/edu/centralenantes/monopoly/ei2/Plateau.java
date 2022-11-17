@@ -56,12 +56,12 @@ public class Plateau {
             String typeCase = null;
 
             for (int i = 0; i < nbCases; i++) {
-                Case c;
+                Case c = null;
                 Joueur j = null;
                 line = br.readLine();
                 values = line.split("_");
                 libelle = values[0];
-                prix = Integer.parseInt(values[1]);
+                prix = Integer.parseInt(values[1])*1000;
                 typeCase = values[1];
                 switch (typeCase) {
                     case "0":
@@ -86,7 +86,7 @@ public class Plateau {
                         c = new Prison(i,libelle);
                         break;
                     case "7":
-                        c = new Compagnie(i, libelle, prix);
+                        c = new Compagnie(i, libelle, prix, null);
                         break;
                     case "8":
                         c = new AllerEnPrison(i,libelle);
