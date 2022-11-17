@@ -11,4 +11,15 @@ public class Communautaire extends PiocherCarte {
         super(num, nom);
     }
 
+    public Communautaire(String nom, String description) {
+        super(nom, description);
+    }
+
+    public Communautaire(PiocherCarte carte) {
+        super(carte);
+    }
+
+    public Communautaire(int i, String libelle) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
