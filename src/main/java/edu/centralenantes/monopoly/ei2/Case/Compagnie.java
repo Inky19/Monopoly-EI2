@@ -32,7 +32,7 @@ return ((int) Math.floor(Math.random()*6))+1;
 }
 
     /**
-     *Permet de calculer le loyer 40 x le nombre aleatoire s'il existe un proprietaire 0 sinon
+     *Permet de calculer le loyer 40 x le nombre aleatoire s'il existe un proprietaire 0 sinon 
      * @return le loyer
      */
     @Override
