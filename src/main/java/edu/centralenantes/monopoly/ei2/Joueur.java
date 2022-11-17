@@ -103,7 +103,9 @@ public class Joueur {
     public void setNbGare(int nbGare) {
         this.nbGare = nbGare;
     }
-    
+    public void gagnerArgent(int gain){
+        this.fortune = this.fortune + gain;
+    }
     
     public ArrayList<Achetable> proprietes(){
         for(Case c : this.plateau.cases) {
