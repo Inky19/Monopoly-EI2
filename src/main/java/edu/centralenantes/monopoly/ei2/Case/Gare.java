@@ -22,7 +22,7 @@ public class Gare extends Achetable {
             retour = retour + "sans propriétaire";
         } else {
             retour = retour + "propriétaire" + this.getProprietaire().getNom() + ", "
-                    + this.getProprietaire().getNbGares()
+                    + this.getProprietaire().getNbGare()
                     + ", loyer = " + this.loyer() + "€";
         }
         return retour;
@@ -30,7 +30,7 @@ public class Gare extends Achetable {
 
     @Override
     public int loyer() {
-        return 2500 * this.getProprietaire().getNbGares();
+        return 2500 * this.getProprietaire().getNbGare();
     }
 
 }

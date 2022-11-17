@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
 package edu.centralenantes.monopoly.ei2.Case;
+
 import edu.centralenantes.monopoly.ei2.Joueur;
+
 /**
  *
  * @author inky19
@@ -12,13 +14,10 @@ public abstract class Achetable extends Case {
   private int prix;
   private Joueur proprietaire;
 
-  public Achetable(int num, String nom, int prix, Joueur proprio){ 
+  public Achetable(int num, String nom, int prix, Joueur proprio) {
     super(num, nom);
     this.prix = prix;
     this.proprietaire = proprio;
-  }
-
-  public Achetable(){ 
   }
 
   public int getPrix() {
@@ -42,7 +41,7 @@ public abstract class Achetable extends Case {
       j.payerBanque(this.prix);
       this.setProprietaire(j);
       if (this.getClass().getName().contains("Gare")) {
-        j.setNbGares(j.getNbGares() + 1);
+        j.setNbGare(j.getNbGare() + 1);
       }
     } catch (NoMoreMoney exception) {
       System.out.println("Vous n'avez pas assez d'argent pour acheter la case.");
