@@ -21,6 +21,6 @@ public class Compagnie extends Achetable{
        else{
            l=5;
        }
-       return(l);
+       return(l); 
     }
 }
