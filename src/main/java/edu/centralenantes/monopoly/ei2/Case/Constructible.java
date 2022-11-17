@@ -131,7 +131,8 @@ public class Constructible extends Achetable {
     }
     
     /**
-     * Affiche la case constructible
+     * Crée un String contenant les caractéristiques de la case
+     * @return un string contenant les caractéristiques de la case
      */
     @Override
     public String toString(){
@@ -140,9 +141,17 @@ public class Constructible extends Achetable {
             constructString += "sans propriétaire";
         }else{
             constructString += "propriétaire : " + this.getProprietaire().getNom();
-            constructString += ", " + this.getNbMaisons()+ " maisons,";
-            constructString += ", "+ this.getNbHotels()+ " "
+            if (this.nbMaisons>0){
+                constructString += ", " + this.getNbMaisons()+ " maisons,";
+            }
+            if (this.nbHotels>0){
+                constructString += ", "+ this.getNbHotels()+ " hôtels";
+            }
+            constructString += "loyer = " + this.loyer(joueur);
         }
     }
 
+    //PROBLEMES ACHETABLE IMPORTER JOUEUR
+    //REVOIR LOYER ET TOUR DE JEU AVEC ARTHUR
+    //VOIR GARE ET TRISTAN
 }
