@@ -6,9 +6,21 @@ package edu.centralenantes.monopoly.ei2.Case;
 
 /**
  *
- * @author inky19
+ * @author Tristan
  */
-public class Gare {
+public class Gare extends Achetable {
 
+    public Gare(int num, String nom, int prix, Joueur proprietaire) {
+        super(num, nom, prix, proprietaire);
+    }
+
+    public String toString() {
+        return "Gare";
+    }
+
+    @Override
+    public int loyer(Joueur j) {
+        return 2500;
+    }
 
 }
