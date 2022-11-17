@@ -5,7 +5,10 @@
 package edu.centralenantes.monopoly.ei2;
 
 import edu.centralenantes.monopoly.ei2.Case.Achetable;
+import edu.centralenantes.monopoly.ei2.Case.*;
+import edu.centralenantes.monopoly.ei2.Case.Taxe;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -19,6 +22,7 @@ public class Joueur {
     int nbGare;
     Plateau plateau;
     public static final int FORTUNE_INITIALE = 100000;
+    
     public Joueur(String nom, int fortune, int indexCase, boolean enPrison, int nbGare, Plateau plateau) {
         this.nom = nom;
         this.fortune = fortune;
@@ -75,6 +79,12 @@ public class Joueur {
         return indexCase;
     }
 
+    public String getNom() {
+        return nom;
+    }
+    
+    
+
     public boolean isEnPrison() {
         return enPrison;
     }
@@ -111,7 +121,9 @@ public class Joueur {
 }
     }
     
-    
+    public static int lanceLeDe() {
+        return ((int) Math.floor(Math.random()*6))+1;
+    }
     
     
 
@@ -123,5 +135,40 @@ public class Joueur {
         }
     }
 
+    
+    public void tourDuJoueur(Plateau p) {
+        int de1 = 0;
+        int de2 = 0;
+        int count = 0;
+        Scanner sc = new Scanner(System.in);
+        while (de1 == de2 && count < 3) {
+            de1 = lanceLeDe();
+            de2 = lanceLeDe();
+            this.avance(de1+de2); 
+            if (Plateau.getCases().get(indexCase) instanceof Achetable) {
+                if (Plateau.getCases().get(indexCase).getProprietaire == null) {
+                    System.out.println("Voulez-vous acheter la propriété ?");
+                    System.out.println("Oui|Non");
+                    String choix = sc.nextLine();
+                    if (choix == "Oui") {
+                        Plateau.getCases().get(indexCase).acheter(this,sc);
+                    }
+                } else if (Plateau.getCases().get(indexCase).getProprietaire().equals(this)) {
+                    System.out.println("Voulez-vous construire la propriété ?");
+                    System.out.println("Oui|Non");
+                    String choix = sc.nextLine();
+                    if (choix == "Oui") {
+                        Plateau.getCases().get(indexCase).construire(this,sc);
+                    }
+                } else {
+                    int loy = Plateau.getCases().get(indexCase).loyer(this);
+                    this.payer(Plateau.getCases().get(indexCase).getProprietaire, loy);
+                }
+            } else if (Plateau.getCases().get(indexCase) instanceof Taxe) {
+                this.payerBanque(Plateau.getCases().get(indexCase).getPrix());
+            }
+            count += 1;
+        }
 
+        }
 }
