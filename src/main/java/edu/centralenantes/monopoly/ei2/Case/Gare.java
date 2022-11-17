@@ -4,6 +4,8 @@
  */
 package edu.centralenantes.monopoly.ei2.Case;
 
+import edu.centralenantes.monopoly.ei2.Joueur;
+
 /**
  *
  * @author Tristan
