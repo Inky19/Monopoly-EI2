@@ -183,13 +183,7 @@ public class Joueur {
             System.out.println(nom + " est sur la case: " + p.getCases().get(indexCase).getNom());
             if (p.getCases().get(indexCase) instanceof Achetable) {
                 if (p.getCases().get(indexCase).getProprietaire == null) {
-                    System.out.println("La propriété vaut: " + p.getCases().get(indexCase).getPrix());
-                    System.out.println("Voulez-vous acheter la propriété ?");
-                    System.out.println("Oui|Non");
-                    String choix = sc.nextLine();
-                    if (choix == "Oui") {
-                        p.getCases().get(indexCase).acheter(this,sc);
-                    }
+                    p.getCases().get(indexCase).acheter(this);
                 } else if (p.getCases().get(indexCase).getProprietaire().equals(this)) {
                     System.out.println("Voulez-vous construire la propriété ?");
                     System.out.println("Oui|Non");
