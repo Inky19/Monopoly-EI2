@@ -141,10 +141,28 @@ public class Joueur {
         final Joueur other = (Joueur) obj;
         return Objects.equals(this.nom, other.nom);
     }
-
+    
+    
     @Override
     public String toString() {
-        return "Joueur{" + '}';
+        String res = (this.nom +"possède "+String.valueOf(this.fortune)+"euros monopolitains.");
+        ArrayList<Achetable> proprietes = this.proprietes();
+        if(proprietes.isEmpty()){
+            res = res+" Il ne possède actuellement pas de bien immobilier.";
+        }
+        else{
+            res = res + "Il est propriétaire de :";
+            for (Achetable a : proprietes){
+                res = res + a.getNom()+"\r";
+            }
+        }
+        if(this.isEnPrison()){
+            res = res + "Il purge actuellement une peine en prison pour les crimes abjects qu'il a commis";
+        }
+        else{
+            res = res + " Il se trouve actuellement sur la case "+this.plateau.cases.get(this.indexCase).getNom();
+        }
+        return  res;
     }
     
     
