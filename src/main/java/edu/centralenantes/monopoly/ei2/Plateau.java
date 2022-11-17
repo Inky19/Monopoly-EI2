@@ -138,6 +138,9 @@ public class Plateau {
     public void tourDeJeu(){
         System.out.println("--------Tour de jeu n°" + tourDeJeu + "---------");
         Iterator<Joueur> it = joueurs.iterator();
+        if(finDePartie()) {
+            return;
+        }
         while (it.hasNext()){
             Joueur joueur = (Joueur) it.next();
             try{
