@@ -26,7 +26,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Arthur, littlewuuu, Bryan,
+ * @author inky19, littlewuuu, Bryan
  */
 public class Plateau {
     List<Case> cases;
@@ -68,7 +68,7 @@ public class Plateau {
                         c = new Constructible(i,libelle,prix);
                         break;
                     case "1":
-                        c = new Gare(i,libelle,prix,null);
+                        c = new Gare(i,libelle,prix, null);
                         break;
                     case "2":
                         c = new Taxe(i,libelle,prix);
@@ -117,13 +117,13 @@ public class Plateau {
         System.out.println("Nombre de Joueur");
         nbJoueur = scanner.nextInt();
         for (int i=0;i<nbJoueur;i++){
-            joueurs.add(new Joueur());
+            Joueurs.add(new Joueur());
         }
         scanner.close();
     }
     
     public void tourDeJeu(){
-        for (Joueur j : joueurs){
+        for (Joueur j : Joueurs){
             j.tourDuJoueur(this);
         }
     }
