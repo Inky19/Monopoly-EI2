@@ -31,6 +31,11 @@ public class Constructible extends Achetable {
      * loyer initial (auxquels s'ajoutent les éventuelles maisons et hôtels)
      */
     private int loyerInit;
+    /**
+     * prix d'achat d'une maison sur la case. Un hôtel vaut 5 maisons.
+     */
+    private int prixMaison;
+    
 
     //GETTERS ET SETTERS
 
@@ -73,6 +78,14 @@ public class Constructible extends Achetable {
     public void setLoyerInit(int loyerInit) {
         this.loyerInit = loyerInit;
     }
+
+    public int getPrixMaison() {
+        return prixMaison;
+    }
+
+    public void setPrixMaison(int prixMaison) {
+        this.prixMaison = prixMaison;
+    }
     
     
     //CONSTRUCTEURS
@@ -86,19 +99,21 @@ public class Constructible extends Achetable {
      * @param a coefficient loyer maison
      * @param b coefficient loyer hôtel
      * @param loy loyer de base (terrain vide)
+     * @param prixM prix d'une maison
      */
-    public Constructible(int num, String nom, int prix, int a, int b, int loy) {
+    public Constructible(int num, String nom, int prix, int a, int b, int loy, int prixM) {
         super(num, nom, prix, null);
         this.nbMaisons = 0;
         this.nbHotels = 0;
         this.a = a;
         this.b = b;
         this.loyerInit = loy;
+        this.prixMaison = prixM;
     }
     
     /**
      * Crée un constructible de départ (pas de propriétaire, pas de maisons, pas
-     * d'hôtels). a, b et loy sont calculés en fonction du prix de la case.
+     * d'hôtels). a, b, loyerInit et prixMaison sont calculés en fonction du prix du constructible.
      * @param num
      * @param nom
      * @param prix 
@@ -107,9 +122,10 @@ public class Constructible extends Achetable {
         super(num, nom, prix, null);
         this.nbMaisons = 0;
         this.nbHotels = 0;
-        this.a = this.getPrix()/8;
-        this.b = this.getPrix()/6;
-        this.loyerInit = this.getPrix()/4;
+        this.a = this.getPrix();
+        this.b = this.getPrix()*5;
+        this.loyerInit = this.getPrix()/6;
+        this.prixMaison = this.getPrix()/2;
     }
 
     //AUTRES METHODES
@@ -118,6 +134,7 @@ public class Constructible extends Achetable {
      * S'il n'y a pas de propriétaire, le loyer est nul
      * @return loyer total à payer
      */
+    @Override
     public int loyer() {
         int loyerTotal = 0;
         if (this.getProprietaire() == null){
