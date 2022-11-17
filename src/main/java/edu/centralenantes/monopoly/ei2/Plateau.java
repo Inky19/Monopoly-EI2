@@ -124,4 +124,10 @@ public class Plateau {
             j.tourDuJoueur(this);
         }
     }
+
+    public List<Case> getCases() {
+        return cases;
+    }
+    
+    
 }
