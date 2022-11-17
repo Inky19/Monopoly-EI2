@@ -1,3 +1,4 @@
+40
 depart_0_5
 Boulevard de BelleVille_60_0
 Caisse De Communauté_0_3
@@ -16,7 +17,7 @@ Rue De Paradis_160_0
 Gare De Lyon_200_0
 Avenue Mozart_180_0
 Caisse De Communaute_0_3
-BoulevardSaintMichel_180_0
+Boulevard Saint Michel_180_0
 Place Pigale_200_0
 Parc Gratuit_0
 Avenue Matignon_220_0
@@ -27,7 +28,8 @@ Gare Du Nord_200_0
 Faubourd Saint Honoré_260_0
 Place De La Bourse_260_0
 Compagnie De Distribution Des Eaux_150_7
-Allez En Prison_0
+Rue La Fayette_280_0
+Allez En Prison_0_8
 Avenue De Breteuil_300_0
 Avenue Foch_300_0
 Caisse De Communauté_0_3
