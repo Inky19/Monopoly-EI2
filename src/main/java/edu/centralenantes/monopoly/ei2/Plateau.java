@@ -93,6 +93,7 @@ public class Plateau {
                         System.out.println("Problèmem : " + typeCase + " ne correspond à rien.");
                 }
                 cases.add(c);
+            }
 
         } catch (NumberFormatException e) {
             System.out.println("Problème avec la convertion d'un string en int");
@@ -107,7 +108,6 @@ public class Plateau {
             System.out.println(c);
         }
     }
-            }
     
     private void initJoueur(){
         int nbJoueur;
