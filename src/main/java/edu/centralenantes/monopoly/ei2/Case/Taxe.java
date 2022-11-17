@@ -28,7 +28,7 @@ public class Taxe extends Case{
      *
      * @return prix de la taxe
      */
-    public int getPrix() {
+    public int getPrix(){
         return prix;
     }
 
