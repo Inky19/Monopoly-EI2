@@ -8,7 +8,7 @@ import edu.centralenantes.monopoly.ei2.Joueur;
 
 /**
  *Permet de créer/manipuler une case Compagnie
- * @author Samar/Oussama
+ * @author ELAYED/ELBETTAL
  */
 public class Compagnie extends Achetable{
 
