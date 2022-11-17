@@ -12,6 +12,15 @@ public abstract class Achetable extends Case {
   private int prix;
   private Joueur proprietaire;
   
+  public void Achetable(int num, String nom, int prix, Joueur proprio){
+    super(num, nom);
+    this.prix = prix;
+    this.proprietaire = proprio;
+  }
+  
+  public void Achetable(){
+  }
+  
   public int getPrix(){
     return this.prix;
   }
