@@ -68,7 +68,7 @@ public class Plateau {
                         c = new Constructible(i,libelle,prix);
                         break;
                     case "1":
-                        c = new Gare(i,libelle,prix);
+                        c = new Gare(i,libelle,prix, null);
                         break;
                     case "2":
                         c = new Taxe(i,libelle,prix);
