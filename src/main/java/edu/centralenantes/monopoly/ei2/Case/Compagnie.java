@@ -12,6 +12,9 @@ public class Compagnie extends Achetable{
     public void Compagnie(Joueur proprietaire){
         super(proprietaire);
     }
+    public static int lanceLeDe() {
+return ((int) Math.floor(Math.random()*6))+1;
+}
     @Override
     public int loyer(Object j) {
         int l;
@@ -19,7 +22,7 @@ public class Compagnie extends Achetable{
            l=0 ; 
        }
        else{
-           l=5 ;
+           l=lanceLeDe()*40 ;
        }
        return(l); 
     }
