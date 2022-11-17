@@ -6,6 +6,7 @@ package edu.centralenantes.monopoly.ei2;
 
 import edu.centralenantes.monopoly.ei2.Case.Achetable;
 import edu.centralenantes.monopoly.ei2.Case.*;
+import edu.centralenantes.monopoly.ei2.Case.Pioche.PiocherCarte;
 import edu.centralenantes.monopoly.ei2.Case.Taxe;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -198,24 +199,28 @@ public class Joueur {
             de2 = lanceLeDe();
             this.avance(de1+de2); 
             System.out.println(nom + " est sur la case: " + p.getCases().get(indexCase).getNom());
-            if (p.getCases().get(indexCase) instanceof Achetable achet) {
-                if (achet.getProprietaire() == null) {
-                    achet.acheter(this);
-                } else if (achet.getProprietaire().equals(this)) {
+
+            if (p.getCases().get(indexCase) instanceof Achetable) {
+                if ((((Achetable)p.getCases().get(indexCase)).getProprietaire()) == null) {
+                    ((Achetable)p.getCases().get(indexCase)).acheter(this);
+                } else if ((((Achetable)p.getCases().get(indexCase)).getProprietaire()).equals(this)) {
                     System.out.println("Voulez-vous construire la propriété ?");
                     System.out.println("Oui|Non");
                     String choix = sc.nextLine();
-                    if (choix == "Oui") {
-                        System.out.println("Pas implémenté");
-                        // achet.construire(this,sc);
+                    if (choix.equals("Oui")) {
+                        (((Constructible)p.getCases().get(indexCase))).construire(sc);
                     }
                 } else {
-                    System.out.println("Le propriétaire de cette case est: "+ achet.getProprietaire().getNom());
-                    int loy = achet.loyer();
-                    this.payer(achet.getProprietaire(), loy);
+                    System.out.println("Le propriétaire de cette case est: "+ ((Achetable)p.getCases().get(indexCase)).getProprietaire().getNom());
+                    int loy = ((Achetable)p.getCases().get(indexCase)).loyer();
+                    this.payer(((Achetable)p.getCases().get(indexCase)).getProprietaire(), loy);
                 }
-            } else if (p.getCases().get(indexCase) instanceof Taxe tax) {
-                this.payerBanque(tax.getPrix());
+            } else if (p.getCases().get(indexCase) instanceof Taxe) {
+                this.payerBanque(((Taxe)p.getCases().get(indexCase)).getPrix());
+            } else if (p.getCases().get(indexCase) instanceof PiocherCarte) {
+                ((PiocherCarte)p.getCases().get(indexCase)).piocher(this);
+                
+
             }
             count += 1;
         }

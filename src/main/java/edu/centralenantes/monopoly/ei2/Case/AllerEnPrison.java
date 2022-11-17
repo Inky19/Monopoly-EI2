@@ -13,11 +13,21 @@ import edu.centralenantes.monopoly.ei2.Joueur;
  * @author arthur
  */
 public class AllerEnPrison extends Case{
-
+    
+    /**
+     * Construcuteur de ALlerEnPrison
+     * @param i = numéro de la carte
+     * @param libelle = nom de carte
+     */
     public AllerEnPrison(int i, String libelle) {
         super(i, libelle);
     }
 
+    /**
+     * Mets une personne en prison
+     * @param j = joueur
+     * @param c = liste des cases du plateau
+     */
     public void allerPrison(Joueur j, List<Case> c){
         j.setEnPrison(true);
         int indexPrison = 10;
