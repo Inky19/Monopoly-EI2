@@ -139,7 +139,9 @@ public class Constructible extends Achetable {
         if (this.getProprietaire()==null){
             constructString += "sans propriétaire";
         }else{
-            System.out.println("propriétaire : " + this.getProprietaire().getNom() + ", " + this.getNbMaisons());
+            constructString += "propriétaire : " + this.getProprietaire().getNom();
+            constructString += ", " + this.getNbMaisons()+ " maisons,";
+            constructString += ", "+ this.getNbHotels()+ " "
         }
     }
 
