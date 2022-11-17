@@ -4,6 +4,8 @@
  */
 package edu.centralenantes.monopoly.ei2.Case.Pioche;
 
+import edu.centralenantes.monopoly.ei2.Joueur;
+
 /**
  *
  * @author inky19
