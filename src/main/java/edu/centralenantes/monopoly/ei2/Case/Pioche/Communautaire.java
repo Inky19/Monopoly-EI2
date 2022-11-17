@@ -7,8 +7,8 @@ package edu.centralenantes.monopoly.ei2.Case.Pioche;
  */
 public class Communautaire extends PiocherCarte {
 
-    public Communautaire(String nom, String description) {
-        super(nom, description);
+    public Communautaire(int num, String nom) {
+        super(num, nom);
     }
 
 }
