@@ -13,6 +13,10 @@ public class Chance extends PiocherCarte {
     public Chance(int num, String nom) {
         super(num, nom);
     }
+    
+    public void piocher(Joueur j){
+        j.setFortune(j.getFortune()+50);
+    }
 
 }
 
