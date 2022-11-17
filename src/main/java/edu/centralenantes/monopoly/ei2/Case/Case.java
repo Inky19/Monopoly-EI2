@@ -50,7 +50,8 @@ public abstract class Case {
     }
 
     /**
-     * 
+     * Redéfinition de la méthode toString 
+     * @return le numéro ainsi que le nom de la case
      */
     
     @Override
