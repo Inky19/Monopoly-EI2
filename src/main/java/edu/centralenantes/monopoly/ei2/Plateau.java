@@ -15,6 +15,7 @@ import edu.centralenantes.monopoly.ei2.Case.Case;
 import edu.centralenantes.monopoly.ei2.Case.Compagnie;
 import edu.centralenantes.monopoly.ei2.Case.Constructible;
 import edu.centralenantes.monopoly.ei2.Case.Gare;
+import edu.centralenantes.monopoly.ei2.Case.Inutile;
 import edu.centralenantes.monopoly.ei2.Case.Prison;
 import edu.centralenantes.monopoly.ei2.Case.Taxe;
 import edu.centralenantes.monopoly.ei2.Case.Pioche.Chance;
@@ -56,6 +57,7 @@ public class Plateau {
 
             for (int i = 0; i < nbCases; i++) {
                 Case c;
+                Joueur j = null;
                 line = br.readLine();
                 values = line.split("_");
                 libelle = values[0];
@@ -66,7 +68,7 @@ public class Plateau {
                         c = new Constructible(i,libelle,prix);
                         break;
                     case "1":
-                        c = new Gare(i,libelle,prix);
+                        c = new Gare(i,libelle,prix,null);
                         break;
                     case "2":
                         c = new Taxe(i,libelle,prix);
@@ -123,5 +125,21 @@ public class Plateau {
         for (Joueur j : Joueurs){
             j.tourDuJoueur(this);
         }
+    }
+
+    public List<Case> getCases() {
+        return this.cases;
+    }
+
+    public void setCases(List<Case> cases) {
+        this.cases = cases;
+    }
+
+    public List<Joueur> getJoueurs() {
+        return this.joueurs;
+    }
+
+    public void setJoueurs(List<Joueur> joueurs) {
+        this.joueurs = joueurs;
     }
 }
