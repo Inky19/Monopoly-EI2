@@ -50,6 +50,6 @@ public abstract class Achetable extends Case {
     }
   }
 
-  public abstract int loyer(Joueur j);
+  public abstract int loyer();
 
 }
