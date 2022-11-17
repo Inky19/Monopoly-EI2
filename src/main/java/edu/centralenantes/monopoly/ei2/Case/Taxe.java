@@ -6,7 +6,7 @@ package edu.centralenantes.monopoly.ei2.Case;
 
 /**
  *Permet de créer/manipuler une case Taxe 
- * @author Samar/ELBETTAL
+ * @author ELAYED/ELBETTAL
  */
 public class Taxe extends Case{
      // prix de la taxe 
