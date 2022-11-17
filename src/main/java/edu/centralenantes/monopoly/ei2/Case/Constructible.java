@@ -115,6 +115,7 @@ public class Constructible extends Achetable {
     //AUTRES METHODES
     /**
      * Calcule le loyer du constructible
+     * S'il n'y a pas de propriétaire, le loyer est nul
      * @return loyer total à payer
      */
     public int loyer() {
@@ -128,8 +129,8 @@ public class Constructible extends Achetable {
     }
     
     /**
-     * Crée un String contenant les caractéristiques de la case
-     * @return un string contenant les caractéristiques de la case
+     * Crée un String contenant les caractéristiques du constructible
+     * @return un string contenant les caractéristiques du constructible
      */
     @Override
     public String toString(){
@@ -148,6 +149,4 @@ public class Constructible extends Achetable {
         }
         return constructString;
     }
-
-    //VOIR GARE ET TRISTAN
 }
