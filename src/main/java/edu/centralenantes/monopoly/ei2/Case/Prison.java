@@ -8,6 +8,9 @@ package edu.centralenantes.monopoly.ei2.Case;
  *
  * @author inky19
  */
-public class Prison {
-
+public class Prison extends Case {
+    
+    public Prison(int numero, String nom){
+        super(numero,nom);
+    }
 }

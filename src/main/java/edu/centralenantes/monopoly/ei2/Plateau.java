@@ -20,9 +20,12 @@ import edu.centralenantes.monopoly.ei2.Case.Taxe;
 import edu.centralenantes.monopoly.ei2.Case.Pioche.Chance;
 import edu.centralenantes.monopoly.ei2.Case.Pioche.Communautaire;
 
+import java.util.Scanner;
+
+
 /**
  *
- * @author inky19
+ * @author inky19, littlewuuu, Bryan
  */
 public class Plateau {
     List<Case> cases;
@@ -90,7 +93,6 @@ public class Plateau {
                         System.out.println("Problèmem : " + typeCase + " ne correspond à rien.");
                 }
                 cases.add(c);
-            }
 
         } catch (NumberFormatException e) {
             System.out.println("Problème avec la convertion d'un string en int");
@@ -98,9 +100,28 @@ public class Plateau {
             System.out.println(e.getMessage());
         }
     }
+    
+    
     public void affiche() {
         for (Case c : cases) {
             System.out.println(c);
+        }
+    }
+            }
+    
+    private void initJoueur(){
+        int nbJoueur;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nombre de Joueur");
+        nbJoueur = scanner.nextInt();
+        for (int i=0;i<nbJoueur;i++){
+            Joueurs.add(new Joueur());
+        }
+    }
+    
+    public void tourDeJeu(){
+        for (Joueur j : Joueurs){
+            j.tourDuJoueur(this);
         }
     }
 }
