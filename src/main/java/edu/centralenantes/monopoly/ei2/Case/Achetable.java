@@ -39,7 +39,8 @@ public abstract class Achetable extends Case {
     this.proprietaire = proprio;
   }
 
-  public void acheter(Joueur j, Scanner scan) {
+  public void acheter(Joueur j) {
+    Scanner scan = new Scanner(System.in);
     System.out.println("Vous possédez :" + j.getFortune() + "€");
     System.out.println("Voulez-vous acheter :" + this.getNom() + " qui vaut " + this.prix + "€");
     System.out.println("oui / non" );
@@ -71,6 +72,7 @@ public abstract class Achetable extends Case {
         reponse = scan.nextLine();
       }
     }
+    scan.close();
   }
 
   public abstract int loyer();
