@@ -19,7 +19,7 @@ Avenue Mozart_180_0
 Caisse De Communaute_0_3
 Boulevard Saint Michel_180_0
 Place Pigale_200_0
-Parc Gratuit_0
+Parc Gratuit_0_5
 Avenue Matignon_220_0
 Chance_0_4
 Boulevard Malesherbes_220_0

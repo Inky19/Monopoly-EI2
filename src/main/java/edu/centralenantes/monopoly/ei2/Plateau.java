@@ -15,6 +15,7 @@ import edu.centralenantes.monopoly.ei2.Case.Case;
 import edu.centralenantes.monopoly.ei2.Case.Compagnie;
 import edu.centralenantes.monopoly.ei2.Case.Constructible;
 import edu.centralenantes.monopoly.ei2.Case.Gare;
+import edu.centralenantes.monopoly.ei2.Case.Inutile;
 import edu.centralenantes.monopoly.ei2.Case.Prison;
 import edu.centralenantes.monopoly.ei2.Case.Taxe;
 import edu.centralenantes.monopoly.ei2.Case.Pioche.Chance;
@@ -55,24 +56,24 @@ public class Plateau {
             String typeCase = null;
 
             for (int i = 0; i < nbCases; i++) {
-                Case c;
+                Case c = null;
                 line = br.readLine();
                 values = line.split("_");
                 libelle = values[0];
-                prix = Integer.parseInt(values[1]);
-                typeCase = values[1];
+                prix = Integer.parseInt(values[1])*1000;
+                typeCase = values[2];
                 switch (typeCase) {
                     case "0":
                         c = new Constructible(i,libelle,prix);
                         break;
                     case "1":
-                        c = new Gare(i,libelle,prix);
+                        c = new Gare(i,libelle,prix, null);
                         break;
                     case "2":
                         c = new Taxe(i,libelle,prix);
                         break;
                     case "3":
-                        c = new Communautaire(i,libelle):
+                        c = new Communautaire(i,libelle);
                         break;
                     case "4":
                         c = new Chance(i,libelle);
@@ -84,7 +85,7 @@ public class Plateau {
                         c = new Prison(i,libelle);
                         break;
                     case "7":
-                        c = new Compagnie(i, libelle, prix);
+                        c = new Compagnie(i, libelle, prix, null);
                         break;
                     case "8":
                         c = new AllerEnPrison(i,libelle);
@@ -117,11 +118,28 @@ public class Plateau {
         for (int i=0;i<nbJoueur;i++){
             joueurs.add(new Joueur());
         }
+        scanner.close();
     }
     
     public void tourDeJeu(){
         for (Joueur j : joueurs){
             j.tourDuJoueur(this);
         }
+    }
+
+    public List<Case> getCases() {
+        return this.cases;
+    }
+
+    public void setCases(List<Case> cases) {
+        this.cases = cases;
+    }
+
+    public List<Joueur> getJoueurs() {
+        return this.joueurs;
+    }
+
+    public void setJoueurs(List<Joueur> joueurs) {
+        this.joueurs = joueurs;
     }
 }

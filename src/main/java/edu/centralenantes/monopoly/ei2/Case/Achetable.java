@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
 package edu.centralenantes.monopoly.ei2.Case;
-import edu.centralenantes.monopoly.ei2.*;
+
+import java.util.Scanner;
+
+import edu.centralenantes.monopoly.ei2.Joueur;
+import edu.centralenantes.monopoly.ei2.NoMoreMoney;
+
 /**
  *
  * @author inky19
@@ -12,13 +17,10 @@ public abstract class Achetable extends Case {
   private int prix;
   private Joueur proprietaire;
 
-  public Achetable(int num, String nom, int prix, Joueur proprio){ 
+  public Achetable(int num, String nom, int prix, Joueur proprio) {
     super(num, nom);
     this.prix = prix;
     this.proprietaire = proprio;
-  }
-
-  public Achetable(){ 
   }
 
   public int getPrix() {
@@ -37,16 +39,37 @@ public abstract class Achetable extends Case {
     this.proprietaire = proprio;
   }
 
-  public void acheter(Joueur j) {
-    try {
-      j.payerBanque(this.prix);
-      this.setProprietaire(j);
-      if (this.getClass().getName().contains("Gare")) {
-        j.setNbGare(j.getNbGare() + 1);
+  public void acheter(Joueur j, Scanner scan) {
+    System.out.println("Vous possédez :" + j.getFortune() + "€");
+    System.out.println("Voulez-vous acheter :" + this.getNom() + " qui vaut " + this.prix + "€");
+    System.out.println("oui / non" );
+    String reponse = scan.nextLine();
+
+    boolean verif = true;
+    while(verif){
+      if (reponse.equals("oui")){
+        try {
+          j.payerBanque(this.prix);
+          this.setProprietaire(j);
+          if (this.getClass().getName().contains("Gare")) {
+            j.setNbGare(j.getNbGare() + 1);
+          }
+        } catch (NoMoreMoney exception) {
+          System.out.println("Vous n'avez pas assez d'argent pour acheter la case.");
+          System.out.println(" ");
+        }
+        verif = false;
       }
-    } catch (NoMoreMoney exception) {
-      System.out.println("Vous n'avez pas assez d'argent pour acheter la case.");
-      System.out.println(" ");
+      else if (reponse.equals("non")){
+        verif = false;
+      }
+      else{
+        System.out.println("Erreur de saisie!");
+        System.out.println("Vous possédez :" + j.getFortune() + "€");
+        System.out.println("Voulez-vous acheter :" + this.getNom() + " qui vaut " + this.prix + "€");
+        System.out.println("oui / non" );
+        reponse = scan.nextLine();
+      }
     }
   }
 

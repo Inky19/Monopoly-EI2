@@ -17,12 +17,20 @@ public class Gare extends Achetable {
     }
 
     public String toString() {
-        return "Gare";
+        String retour = this.getNom() + "(coût : " + this.getPrix() + " € ) - ";
+        if (this.getProprietaire() == null) {
+            retour = retour + "sans propriétaire";
+        } else {
+            retour = retour + "propriétaire" + this.getProprietaire().getNom() + ", "
+                    + this.getProprietaire().getNbGare()
+                    + ", loyer = " + this.loyer() + "€";
+        }
+        return retour;
     }
 
     @Override
-    public int loyer(Joueur j) {
-        return 2500;
+    public int loyer() {
+        return 2500 * this.getProprietaire().getNbGare();
     }
 
 }

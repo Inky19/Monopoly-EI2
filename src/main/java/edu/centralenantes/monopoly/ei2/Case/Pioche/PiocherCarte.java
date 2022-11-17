@@ -4,11 +4,15 @@
  */
 package edu.centralenantes.monopoly.ei2.Case.Pioche;
 
+import edu.centralenantes.monopoly.ei2.Case.Case;
+
 /**
  *
  * @author inky19
  */
-public class PiocherCarte {
-
-
+public class PiocherCarte extends Case{    
+    
+    public PiocherCarte(int num, String nom){
+        super(num, nom);
+    }
 }
