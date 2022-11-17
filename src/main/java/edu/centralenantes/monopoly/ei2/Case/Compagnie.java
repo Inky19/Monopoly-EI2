@@ -6,8 +6,21 @@ package edu.centralenantes.monopoly.ei2.Case;
 
 /**
  *
- * @author inky19
+ * @author Samar/Oussama
  */
-public class Compagnie {
-
+public class Compagnie extends Achetable{
+    public void Compagnie(Joueur proprietaire){
+        super(proprietaire);
+    }
+    @Override
+    public int loyer(Object j) {
+        int l;
+        if (this.proprietaire==null){
+           l=0;
+       }
+       else{
+           l=5;
+       }
+       return(l);
+    }
 }
