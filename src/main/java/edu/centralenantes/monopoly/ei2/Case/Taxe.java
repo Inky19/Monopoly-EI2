@@ -13,7 +13,7 @@ public class Taxe extends Case{
      private int prix ;
 
     /**
-     * Permet de créer une case Taxe à partir de son nom ainsi ,son numéro et son prix 
+     * Permet de créer une case Taxe à partir de son nom ,son numéro et son prix 
      * @param num Numero de la case
      * @param nom Nom de la case
      * @param prix prix de la taxe
@@ -21,7 +21,7 @@ public class Taxe extends Case{
     public Taxe(int num , String nom ,int prix) {
         super(num , nom) ;
         this.prix = prix;
-    }
+   }
     // GETTERS & SETTERS
     
     /**
