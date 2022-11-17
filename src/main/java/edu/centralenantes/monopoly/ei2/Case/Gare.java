@@ -16,6 +16,10 @@ public class Gare extends Achetable {
         super(num, nom, prix, proprietaire);
     }
 
+    public Gare(int i, String libelle, int prix) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String toString() {
         String retour = this.getNom() + "(coût : " + this.getPrix() + " € ) - ";
         if (this.getProprietaire() == null) {

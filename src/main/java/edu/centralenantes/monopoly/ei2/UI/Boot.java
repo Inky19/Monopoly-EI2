@@ -13,8 +13,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,10 +33,16 @@ public class Boot {
     private static BufferedImage videImage;
     private static BufferedImage gareImage;
     
-    public Boot() throws IOException{
-        caseImage = ImageIO.read(new File("assets/case.png"));
-        gareImage = ImageIO.read(new File("assets/gare.png"));
-        videImage = ImageIO.read(new File("assets/vide.png"));
+    public Boot() {
+        
+        try {
+            caseImage = ImageIO.read(new File("assets/case.png"));
+            gareImage = ImageIO.read(new File("assets/gare.png"));
+            videImage = ImageIO.read(new File("assets/vide.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Boot.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
     }
     
@@ -63,6 +72,9 @@ public class Boot {
             }
         }
         frame.add(panel);
+        
+        JButton jouer = new JButton("jouer");
+        panel.add(jouer);
         
     }
 }

@@ -4,7 +4,7 @@
  */
 package edu.centralenantes.monopoly.ei2.UI;
 
-import javax.swing.SwingUtilities;
+import edu.centralenantes.monopoly.ei2.Plateau;
 
 /**
  *
@@ -17,6 +17,7 @@ public class testUI {
      */
     public static void main(String args[]) {
         Boot test = new Boot();
-        test.createAndShowGui();
+        Plateau plateau = new Plateau();
+        test.createAndShowGui(plateau);
     }
 }

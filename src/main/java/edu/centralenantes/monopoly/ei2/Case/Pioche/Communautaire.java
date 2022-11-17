@@ -18,4 +18,8 @@ public class Communautaire extends PiocherCarte {
     public Communautaire(PiocherCarte carte) {
         super(carte);
     }
+
+    public Communautaire(int i, String libelle) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

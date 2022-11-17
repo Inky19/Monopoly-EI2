@@ -9,6 +9,10 @@ package edu.centralenantes.monopoly.ei2.Case;
  * @author Samar/Oussama
  */
 public class Compagnie extends Achetable{
+
+    public Compagnie(int i, String libelle, int prix) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     public void Compagnie(Joueur proprietaire){
         super(proprietaire);
     }
