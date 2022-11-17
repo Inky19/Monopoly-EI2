@@ -5,7 +5,9 @@
 package edu.centralenantes.monopoly.ei2;
 
 import edu.centralenantes.monopoly.ei2.Case.Achetable;
+import edu.centralenantes.monopoly.ei2.Case.Case;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -108,9 +110,32 @@ public class Joueur {
     }
     
     public ArrayList<Achetable> proprietes(){
+        ArrayList<Achetable> res = new ArrayList<>();
         for(Case c : this.plateau.cases) {
-            
+            if(c instanceof Achetable){
+                Achetable manip = (Achetable)c;
+                if(manip.getProprietaire().equals(this)){
+                    res.add(manip);
+                }
+            }
 }
+            return res;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Joueur other = (Joueur) obj;
+        return Objects.equals(this.nom, other.nom);
     }
     
     
