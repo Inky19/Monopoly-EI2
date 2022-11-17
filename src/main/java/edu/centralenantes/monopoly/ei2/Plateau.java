@@ -122,7 +122,6 @@ public class Plateau {
         System.out.print("Nombre de Joueur : ");
         nbJoueur = scanner.nextInt();
         for (int i=0;i<nbJoueur;i++){
-            joueurs.add(new Joueur());
             System.out.println("-------Création du joueur : " + i  + "--------------");
             System.out.print("Nom du joueur : ");
             String nomJoueur = scanner.nextLine();
