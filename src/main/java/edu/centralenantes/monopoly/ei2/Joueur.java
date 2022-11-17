@@ -106,6 +106,7 @@ public class Joueur {
     }
 
 
+
     public int getNbGare() {
         return nbGare;
     }
@@ -113,12 +114,42 @@ public class Joueur {
     public void setNbGare(int nbGare) {
         this.nbGare = nbGare;
     }
-    
+    public void gagnerArgent(int gain){
+        this.fortune = this.fortune + gain;
+    }
     
     public ArrayList<Achetable> proprietes(){
+        ArrayList<Achetable> res = new ArrayList<>();
         for(Case c : this.plateau.cases) {
-            
+            if(c instanceof Achetable){
+                Achetable manip = (Achetable)c;
+                if(manip.getProprietaire().equals(this)){
+                    res.add(manip);
+                }
+            }
 }
+            return res;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Joueur other = (Joueur) obj;
+        return Objects.equals(this.nom, other.nom);
+    }
+
+    @Override
+    public String toString() {
+        return "Joueur{" + '}';
     }
     
     public static int lanceLeDe() {
@@ -133,6 +164,7 @@ public class Joueur {
             newIndex = newIndex % 40;
             this.gagnerArgent(20000);
         }
+        this.indexCase = newIndex;
     }
 
     

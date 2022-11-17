@@ -115,12 +115,12 @@ public class Plateau {
         System.out.println("Nombre de Joueur");
         nbJoueur = scanner.nextInt();
         for (int i=0;i<nbJoueur;i++){
-            Joueurs.add(new Joueur());
+            joueurs.add(new Joueur());
         }
     }
     
     public void tourDeJeu(){
-        for (Joueur j : Joueurs){
+        for (Joueur j : joueurs){
             j.tourDuJoueur(this);
         }
     }
