@@ -38,9 +38,17 @@ public abstract class Achetable extends Case {
   }
   
   public void acheter(Joueur j){
-    
-    this.setProprietaire(j);
-    j.setFortune( j.getFortune() - this.prix );
+    try {
+      j.payerBanque(this.prix);
+      this.setProprietaire(j);
+      if (this.getClass().getName().contains("Gare")){
+        j.setNbGares(j.getNbGares() + 1);
+      }
+    }
+    catch (NoMoreMoney exception){
+      System.out.println("Vous n'avez pas assez d'argent pour acheter la case.");
+      System.out.println(" ");
+    }      
   }
   
   public abstract int loyer(Joueur j);
