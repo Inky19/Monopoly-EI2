@@ -15,7 +15,7 @@ public class testUI {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Boot test = new Boot();
         Plateau plateau = new Plateau();
         test.createAndShowGui(plateau);

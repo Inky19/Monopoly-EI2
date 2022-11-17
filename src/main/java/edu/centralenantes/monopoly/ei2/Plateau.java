@@ -123,7 +123,7 @@ public class Plateau {
     
     public void tourDeJeu(){
         for (Joueur j : joueurs){
-            j.tourDuJoueur(this);
+            //j.tourDuJoueur(this);
         }
     }
 

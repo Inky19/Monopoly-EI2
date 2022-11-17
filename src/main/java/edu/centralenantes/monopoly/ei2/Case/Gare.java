@@ -20,6 +20,7 @@ public class Gare extends Achetable {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
     public String toString() {
         String retour = this.getNom() + "(coût : " + this.getPrix() + " € ) - ";
         if (this.getProprietaire() == null) {
