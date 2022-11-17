@@ -10,7 +10,7 @@ package edu.centralenantes.monopoly.ei2.Case.Pioche;
  */
 public class Chance extends PiocherCarte {
 
-    public Chance(String num, String nom) {
+    public Chance(int num, String nom) {
         super(num, nom);
     }
 

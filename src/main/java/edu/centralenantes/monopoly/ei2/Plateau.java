@@ -74,7 +74,7 @@ public class Plateau {
                         c = new Taxe(i,libelle,prix);
                         break;
                     case "3":
-                        c = new Communautaire(i,libelle):
+                        c = new Communautaire(i,libelle);
                         break;
                     case "4":
                         c = new Chance(i,libelle);
