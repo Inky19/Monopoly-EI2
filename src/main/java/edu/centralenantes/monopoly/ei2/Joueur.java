@@ -27,16 +27,18 @@ public class Joueur {
         this.indexCase = 0;
         this.enPrison = false;
     }
-    
-    public Joueur(Joueur j) {
-        this.nom = j.nom;
-        this.fortune = j.fortune;
-        this.indexCase = j.indexCase;
-        this.enPrison = j.enPrison;
+    public void payer(Joueur j, int payement) throws NoMoreMoney {
+        if (this.fortune < payement) {
+            throw new NoMoreMoney();
     }
-
-    public String getNom() {
-        return nom;
+        this.fortune = this.fortune - payement;
+        j.setFortune(j.getFortune()+ payement);
+    }
+    public void payerBanque(int payement) throws NoMoreMoney{
+        if (this.fortune < payement) {
+            throw new NoMoreMoney();
+    }
+        this.fortune = this.fortune - payement;
     }
 
     public int getFortune() {
@@ -66,6 +68,7 @@ public class Joueur {
     public void setEnPrison(boolean enPrison) {
         this.enPrison = enPrison;
     }
+    
     
     
     
