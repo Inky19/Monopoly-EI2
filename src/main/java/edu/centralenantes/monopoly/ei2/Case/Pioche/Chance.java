@@ -13,17 +13,10 @@ public class Chance extends PiocherCarte {
     public Chance(int num, String nom) {
         super(num, nom);
     }
-
-    public Chance(String nom, String description) {
-        super(nom, description);
+    
+    public void piocher(Joueur j){
+        j.setFortune(j.getFortune()+50);
     }
 
-    public Chance(PiocherCarte carte) {
-        super(carte);
-    }
-
-    public Chance(int i, String libelle) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
 

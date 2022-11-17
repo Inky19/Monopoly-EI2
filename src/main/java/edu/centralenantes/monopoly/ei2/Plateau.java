@@ -116,15 +116,34 @@ public class Plateau {
         System.out.println("Nombre de Joueur");
         nbJoueur = scanner.nextInt();
         for (int i=0;i<nbJoueur;i++){
-            Joueurs.add(new Joueur());
+            joueurs.add(new Joueur());
         }
         scanner.close();
     }
     
+    /**
+     * Fait jouer tous les joueurs du jeu et les supprime en cas de faillite
+     */
     public void tourDeJeu(){
-        for (Joueur j : Joueurs){
-            j.tourDuJoueur(this);
+        Iterator it = joueurs.iterator();
+        while (it.hasNext()){
+            Joueur joueur = (Joueur) it.next();
+            try{
+                System.out.println("Au tour de " + joueur.getNom() + " de jouer.");
+                joueur.tourDuJoueur(this);
+            } catch(NoMoreMoney ex){
+                it.remove();
+                System.out.println(joueur.getNom() + " a fait faillite !");
+            }
         }
+    }
+
+    /**
+     * Renvoie un booléen si la partie est finie (true) ou non (false)
+     * @return
+     */
+    public boolean finDePartie(){
+        return (joueurs.size()<2);
     }
 
     public List<Case> getCases() {

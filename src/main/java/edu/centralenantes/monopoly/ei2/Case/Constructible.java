@@ -4,6 +4,10 @@
  */
 package edu.centralenantes.monopoly.ei2.Case;
 
+import edu.centralenantes.monopoly.ei2.NoMoreMoney;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  * Classe assurant la gestion des cases constructibles
  * @author Manon Coutier
@@ -143,6 +147,57 @@ public class Constructible extends Achetable {
             loyerTotal = this.loyerInit+ this.a*this.nbMaisons+this.b*this.nbHotels;
             return loyerTotal;
         }
+    }
+    
+    /**
+     * Permet au propriétaire de choisir le nombre de maison à construire
+     * @param scan scanner utilisé
+     * @return le choix du nombre de maisons à construire.
+     */
+    public int choixConstruire(Scanner scan){
+        boolean valide = false;
+        int maisonConst = 0;
+        
+        while (!valide){
+            try{
+                int borneMaison = 5 - this.getNbMaisons();
+                System.out.println("Tu as actuellement " + this.nbMaisons + " maisons du cette case.");
+                System.out.println("Tu peux construire entre 0 et " + borneMaison + ". La cinquième transforme tes maisons en un hôtel.");
+                System.out.println("Le prix d'une maison est de "+ this.prixMaison + " €");
+                System.out.println("Combien de maison veux-tu construire ?");
+                maisonConst = scan.nextInt();
+                scan.nextLine();
+                if (maisonConst>borneMaison || maisonConst<0){
+                    System.out.println("Tu ne peux pas construire "+ maisonConst + " maisons cette fois.");
+                    valide = false;
+                }else{
+                    valide = true;              
+                }
+            }catch (InputMismatchException err){
+                System.out.println("Ce n'est pas un entier, réessaie !");
+                valide = false;
+            }
+        }
+        return maisonConst;
+    }
+    
+    /**
+     * Construit le nombre de maisons voulu par le propriétaire
+     * @param scan scanner utilisé
+     */
+    public void construire(Scanner scan){
+        try {
+            int maisonsConstruites = this.choixConstruire(scan);
+            int aPayer = maisonsConstruites*this.prixMaison;
+            this.getProprietaire().payerBanque(aPayer);
+            this.nbMaisons+=maisonsConstruites;
+            if (this.nbMaisons==5){
+                this.nbMaisons=0;
+                this.nbHotels++;
+            }
+        }catch(NoMoreMoney err){
+            System.out.println("Tu n'as pas assez d'argent, dommage...");
+        }     
     }
     
     /**
