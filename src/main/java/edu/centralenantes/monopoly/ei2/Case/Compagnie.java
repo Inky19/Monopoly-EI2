@@ -4,30 +4,46 @@
  */
 package edu.centralenantes.monopoly.ei2.Case;
 
+import edu.centralenantes.monopoly.ei2.Joueur;
+
 /**
- *
- * @author Samar/Oussama
+ *Permet de créer/manipuler une case Compagnie
+ * @author ELAYED/ELBETTAL
  */
 public class Compagnie extends Achetable{
 
-    public Compagnie(int i, String libelle, int prix) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    /**
+     *Permet de créer une case Compagnie à partir de son nom ,son numéro , son prix et son proprietaire 
+     * @param num numero de la case
+     * @param nom nom de la case 
+     * @param prix prix de la case 
+     * @param proprio proprietaire de la case
+     */
+    public  Compagnie(int num, String nom, int prix, Joueur proprio ){
+        super(num , nom , prix , proprio);
     }
-    public void Compagnie(Joueur proprietaire){
-        super(proprietaire);
-    }
+
+    /**
+     *Permet de generer un nombre aleatoire entre 1 et 6 
+     * @return nombre aleatoire entre 1 et 6
+     */
     public static int lanceLeDe() {
 return ((int) Math.floor(Math.random()*6))+1;
 }
+
+    /**
+     *Permet de calculer le loyer 40 x le nombre aleatoire s'il existe un proprietaire 0 sinon 
+     * @return le loyer
+     */
     @Override
-    public int loyer(Object j) {
+    public int loyer() {
         int l;
-        if (this.proprietaire==null){
+        if (this.getProprietaire()==null){
            l=0 ; 
        }
        else{
            l=lanceLeDe()*40 ;
        }
-       return(l); 
+       return l ; 
     }
 }

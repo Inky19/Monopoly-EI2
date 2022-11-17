@@ -57,18 +57,17 @@ public class Plateau {
 
             for (int i = 0; i < nbCases; i++) {
                 Case c = null;
-                Joueur j = null;
                 line = br.readLine();
                 values = line.split("_");
                 libelle = values[0];
-                prix = Integer.parseInt(values[1]);
-                typeCase = values[1];
+                prix = Integer.parseInt(values[1])*1000;
+                typeCase = values[2];
                 switch (typeCase) {
                     case "0":
                         c = new Constructible(i,libelle,prix);
                         break;
                     case "1":
-                        c = new Gare(i,libelle,prix);
+                        c = new Gare(i,libelle,prix, null);
                         break;
                     case "2":
                         c = new Taxe(i,libelle,prix);
@@ -86,7 +85,7 @@ public class Plateau {
                         c = new Prison(i,libelle);
                         break;
                     case "7":
-                        c = new Compagnie(i, libelle, prix);
+                        c = new Compagnie(i, libelle, prix, null);
                         break;
                     case "8":
                         c = new AllerEnPrison(i,libelle);
@@ -117,13 +116,13 @@ public class Plateau {
         System.out.println("Nombre de Joueur");
         nbJoueur = scanner.nextInt();
         for (int i=0;i<nbJoueur;i++){
-            joueurs.add(new Joueur());
+            Joueurs.add(new Joueur());
         }
         scanner.close();
     }
     
     public void tourDeJeu(){
-        for (Joueur j : joueurs){
+        for (Joueur j : Joueurs){
             j.tourDuJoueur(this);
         }
     }
