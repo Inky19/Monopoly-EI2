@@ -8,6 +8,9 @@ import java.util.Scanner;
 
 import edu.centralenantes.monopoly.ei2.Joueur;
 import edu.centralenantes.monopoly.ei2.NoMoreMoney;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Classe abstraite assurant la gestion des Achetables
@@ -61,8 +64,8 @@ public abstract class Achetable extends Case {
      * Permet à un joueur de devenir propriétaire d'un achetable
      * @param j joueur
      */
-    public void acheter(Joueur j) {
-        Scanner scan = new Scanner(System.in);
+    public void acheter(Joueur j, Scanner scan) {
+        //Scanner scan = new Scanner(System.in);
         System.out.println("Vous possédez :" + j.getFortune() + "€");
         System.out.println("Voulez-vous acheter :" + this.getNom() + " qui vaut " + this.prix + "€");
         System.out.println("oui / non");
@@ -92,7 +95,6 @@ public abstract class Achetable extends Case {
                 reponse = scan.next();
             }
         }
-        scan.close();
     }
     
     /**

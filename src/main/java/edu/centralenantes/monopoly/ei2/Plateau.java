@@ -129,7 +129,6 @@ public class Plateau {
             joueurs.add(new Joueur(nomJoueur, this));
             System.out.println("Le joueur a bien été crée !");
         }
-        scanner.close();
     }
     
     /**

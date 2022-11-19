@@ -200,10 +200,10 @@ public class Joueur {
             this.avance(de1+de2); 
             System.out.println(nom + " est sur la case: " + p.getCases().get(indexCase).getNom());
 
-            if (p.getCases().get(indexCase) instanceof Achetable) {
-                if ((((Achetable)p.getCases().get(indexCase)).getProprietaire()) == null) {
-                    ((Achetable)p.getCases().get(indexCase)).acheter(this);
-                } else if ((((Achetable)p.getCases().get(indexCase)).getProprietaire()).equals(this)) {
+            if (p.getCases().get(indexCase) instanceof Achetable achetable) {
+                if ((achetable.getProprietaire()) == null) {
+                    achetable.acheter(this, sc);
+                } else if ((achetable.getProprietaire()).equals(this)) {
                     System.out.println("Voulez-vous construire la propriété ?");
                     System.out.println("Oui|Non");
                     String choix = sc.nextLine();
@@ -211,19 +211,18 @@ public class Joueur {
                         (((Constructible)p.getCases().get(indexCase))).construire(sc);
                     }
                 } else {
-                    System.out.println("Le propriétaire de cette case est: "+ ((Achetable)p.getCases().get(indexCase)).getProprietaire().getNom());
-                    int loy = ((Achetable)p.getCases().get(indexCase)).loyer();
-                    this.payer(((Achetable)p.getCases().get(indexCase)).getProprietaire(), loy);
+                    System.out.println("Le propriétaire de cette case est: "+ achetable.getProprietaire().getNom());
+                    int loy = achetable.loyer();
+                    this.payer(achetable.getProprietaire(), loy);
                 }
-            } else if (p.getCases().get(indexCase) instanceof Taxe) {
-                this.payerBanque(((Taxe)p.getCases().get(indexCase)).getPrix());
-            } else if (p.getCases().get(indexCase) instanceof PiocherCarte) {
-                ((PiocherCarte)p.getCases().get(indexCase)).piocher(this);
+            } else if (p.getCases().get(indexCase) instanceof Taxe taxe) {
+                this.payerBanque(taxe.getPrix());
+            } else if (p.getCases().get(indexCase) instanceof PiocherCarte piocherCarte) {
+                piocherCarte.piocher(this);
                 
 
             }
             count += 1;
         }
-
         }
 }
